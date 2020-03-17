@@ -13,9 +13,9 @@ A virtual analog control for the directions:
 ----------
 
 ### Demonstration (PT-BR)
-- https://www.youtube.com/watch?v=[VIDEO]
+- https://www.youtube.com/watch?v=plHDdyC_suc
 
-[![Video with explanation in Portuguese](https://img.youtube.com/vi/[VIDEO]/0.jpg)](https://www.youtube.com/watch?v=[VIDEO])
+[![Video with explanation in Portuguese](https://img.youtube.com/vi/plHDdyC_suc/0.jpg)](https://www.youtube.com/watch?v=plHDdyC_suc)
 
 ----------
 

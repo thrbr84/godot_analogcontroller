@@ -13,9 +13,9 @@ Um controle analógico virtual para as seguintes direções:
 ----------
 
 ### Demonstração (PT-BR)
-- https://www.youtube.com/watch?v=[VIDEO]
+- https://www.youtube.com/watch?v=plHDdyC_suc
 
-[![Video com a explicação](https://img.youtube.com/vi/[VIDEO]/0.jpg)](https://www.youtube.com/watch?v=[VIDEO])
+[![Video com a explicação](https://img.youtube.com/vi/plHDdyC_suc/0.jpg)](https://www.youtube.com/watch?v=plHDdyC_suc)
 
 ----------
 
