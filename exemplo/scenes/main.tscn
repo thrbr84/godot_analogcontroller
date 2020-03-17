@@ -204,7 +204,6 @@ __meta__ = {
 [node name="AnalogController" type="Node2D" parent="CanvasLayerUI"]
 position = Vector2( 360, 1100 )
 script = ExtResource( 2 )
-typeAnalogic = 0
 
 [node name="players" type="Node2D" parent="."]
 position = Vector2( 0, 744 )
