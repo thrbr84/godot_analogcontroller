@@ -29,6 +29,7 @@ export(bool) var isDynamicallyShowing = false
 export(typesAnalog) var typeAnalogic = typesAnalog.DIRECTION_8
 export(float,0.00,1.0) var smoothClick = 0.02
 export(float,0.00,1.0) var smoothRelease = 0.02
+export(Vector2) var scaleBall = Vector2(1,1)
 export(Texture) var bigBallTexture = ResourceLoader.load("res://addons/analog_controller/big_circle_DIRECTION_8.png")
 export(Texture) var smallBallTexture = ResourceLoader.load("res://addons/analog_controller/small_circle_DIRECTION_8.png")
 export(Dictionary) var directionsResult = {
@@ -50,6 +51,7 @@ func _ready() -> void:
 	initial_position = global_position
 	_configAnalog()
 	initialized = true
+	scale = Vector2(1,1)
 
 func _configAnalog():
 	set_process_input(true)
@@ -57,10 +59,12 @@ func _configAnalog():
 	if !initialized:
 		add_child(bg)
 		bg.add_child(bgAnalogicoBase)
+		bg.scale = scaleBall
 		bg.texture = bigBallTexture
 		
 		add_child(ball)
 		ball.add_child(ballAnalogicoBall)
+		ball.scale = scaleBall
 		ball.texture = smallBallTexture
 		
 	parent = get_parent();
@@ -101,7 +105,7 @@ func _input(event):
 		if (currentPointerIDX != incomingPointer) and event.is_pressed():
 			currentPointerIDX = incomingPointer;
 			if event is InputEventMouseMotion or event is InputEventMouseButton:
-				showAtPos(event.position);
+				showAtPos(event.position)
 
 	var theSamePointer = currentPointerIDX == incomingPointer
 	if isActive() and theSamePointer:
@@ -177,7 +181,8 @@ func process_input(event):
 			match _pos:
 				"right": 		_force = Vector2(1, 0) * _force
 				"left": 		_force = Vector2(-1, 0) * _force
-				_: 				_force = Vector2.ZERO
+					
+				_: 	_force = Vector2.ZERO
 			
 			if _force is Vector2:
 				_force = _force.normalized()
@@ -273,18 +278,29 @@ func hide() -> void:
 
 func updateBallPos() -> void:
 	if local_paused:return
-	ballPos.x = halfSize.x * currentForce.x
-	ballPos.y = halfSize.y * -currentForce.y
+	
+	if typeAnalogic != typesAnalog.DIRECTION_2_V:
+		ballPos.x = halfSize.x * currentForce.x
+	
+	if typeAnalogic != typesAnalog.DIRECTION_2_H:
+		ballPos.y = halfSize.y * -currentForce.y
+		
+	ballPos *= scaleBall 
 	ball.set_position(ballPos)
 	
-	var bigBallSize = bg.texture.get_size().x / 2
+	var bigBallSize = (bg.texture.get_size().x / 2) * scaleBall.x
 	currentForce2 = (centerPoint.distance_to(ballPos) * 100.0 / bigBallSize) / 100.0
 	currentForce2 = stepify(currentForce2, .001)
+	currentForce2 = clamp(currentForce2, -1.0, 1.0)
+
 
 func calculateForce(var x, var y) -> void:
 	if local_paused:return
-	currentForce.x = (x - centerPoint.x)/halfSize.x
-	currentForce.y = -(y - centerPoint.y)/halfSize.y
+	if typeAnalogic != typesAnalog.DIRECTION_2_V:
+		currentForce.x = (x - centerPoint.x)/halfSize.x
+	
+	if typeAnalogic != typesAnalog.DIRECTION_2_H:
+		currentForce.y = -(y - centerPoint.y)/halfSize.y
 	
 	if currentForce.length_squared()>1:
 		currentForce=currentForce/currentForce.length()
