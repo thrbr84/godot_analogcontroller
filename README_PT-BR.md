@@ -26,7 +26,7 @@ No projeto exemplo, mostro dois exemplos de como utilizar em um player com movim
 
 ##### Configurar o Addon
 - Faça download do arquivo [addon/analog.zip](addon/analog_controller.zip)
-- Coloque na pasta "addon" do seu projeto
+- Coloque na pasta "addons" do seu projeto
 - Acesse as Configurações do Projeto > Plugin e habilite o plugin "AnalogController"
 
 ----------

@@ -26,7 +26,7 @@ In the example project, I show two examples of how to use a player with movement
 
 ##### Configure the Addon
 - Download the file [addon/analog.zip](addon/analog_controller.zip)
-- Place in your project's "addon" folder
+- Place in your project's "addons" folder
 - Access the Project Settings > Plugin and enable the "AnalogController" plugin
 
 ----------
