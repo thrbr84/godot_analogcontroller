@@ -1,0 +1,103 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/font/PoetsenOne-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://scripts/main.gd" type="Script" id=2]
+[ext_resource path="res://addons/analog_controller/analog.gd" type="Script" id=3]
+[ext_resource path="res://assets/point_off.png" type="Texture" id=4]
+[ext_resource path="res://assets/point_on.png" type="Texture" id=5]
+[ext_resource path="res://assets/particles.png" type="Texture" id=7]
+[ext_resource path="res://assets/plane1.png" type="Texture" id=8]
+[ext_resource path="res://icon.png" type="Texture" id=9]
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = ExtResource( 1 )
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0209908, 0, 0, Vector2( 1, 0 ), -2.96993, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0.00398406, 1 )
+colors = PoolColorArray( 0.701961, 0.117647, 0.113725, 1, 0.996078, 0.996078, 0.00392157, 0 )
+
+[node name="main" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="bkg" type="ColorRect" parent="."]
+margin_right = 720.0
+margin_bottom = 300.0
+color = Color( 0.905882, 0.654902, 0.0823529, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="Sprite" parent="bkg"]
+position = Vector2( 360, 150 )
+scale = Vector2( 0.548463, 0.548463 )
+texture = ExtResource( 9 )
+
+[node name="dynamicController" type="CheckButton" parent="."]
+margin_left = 161.0
+margin_top = 314.0
+margin_right = 520.0
+margin_bottom = 372.0
+focus_mode = 0
+custom_fonts/font = SubResource( 2 )
+custom_icons/off = ExtResource( 4 )
+custom_icons/on = ExtResource( 5 )
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+text = "Dynamic"
+
+[node name="CanvasLayerUI" type="CanvasLayer" parent="."]
+
+[node name="AnalogController" type="Node2D" parent="CanvasLayerUI"]
+position = Vector2( 360, 1100 )
+script = ExtResource( 3 )
+
+[node name="players" type="Node2D" parent="."]
+position = Vector2( 0, 744 )
+z_index = 2
+
+[node name="plane" type="Sprite" parent="players" groups=["plane", "player"]]
+position = Vector2( 360, 0 )
+scale = Vector2( 0.713328, 0.713328 )
+texture = ExtResource( 8 )
+
+[node name="particles_l" type="CPUParticles2D" parent="players/plane"]
+position = Vector2( -17.6973, 109.717 )
+z_index = -1
+lifetime = 0.5
+speed_scale = 3.0
+local_coords = false
+texture = ExtResource( 7 )
+emission_shape = 1
+emission_sphere_radius = 1.0
+scale_amount_curve = SubResource( 3 )
+color_ramp = SubResource( 4 )
+
+[node name="particles_r" type="CPUParticles2D" parent="players/plane"]
+position = Vector2( 22.9572, 109.717 )
+z_index = -1
+lifetime = 0.5
+speed_scale = 3.0
+local_coords = false
+texture = ExtResource( 7 )
+emission_shape = 1
+emission_sphere_radius = 1.0
+scale_amount_curve = SubResource( 3 )
+color_ramp = SubResource( 4 )
+
+[node name="shadow" type="Sprite" parent="players/plane"]
+modulate = Color( 0, 0, 0, 0.0941176 )
+position = Vector2( -9.81757, 232.742 )
+scale = Vector2( 0.508198, 0.508198 )
+z_index = -1
+texture = ExtResource( 8 )
+
+[node name="shoot" type="Position2D" parent="players/plane"]
+position = Vector2( 3.27017, -130.807 )
+
+[connection signal="toggled" from="dynamicController" to="." method="_on_dynamicController_toggled"]
+[connection signal="analogChange" from="CanvasLayerUI/AnalogController" to="." method="_on_AnalogController_analogChange"]
+[connection signal="analogRelease" from="CanvasLayerUI/AnalogController" to="." method="_on_AnalogController_analogRelease"]
