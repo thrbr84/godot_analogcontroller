@@ -1,6 +1,7 @@
 # Godot - Analog Controller (Controle Analógico)
 
-- Desenvolvido para a Godot 3.2
+- Desenvolvido para a Godot 4
+- [Clique aqui para obter a versão compatível com Godot 3](https://github.com/thiagobruno/godot_analogcontroller/releases/tag/GodotV3)
 - [English documentation](README.md)
 
 Um controle analógico virtual para as seguintes direções:
@@ -60,5 +61,5 @@ E no parâmetro "pos" é retornado a alias da posição... "direita, esquerda, e
 ----------
 
 ### ...
-Vai utilizar esse código de forma comercial? Fique tranquilo pode usar de forma livre e sem precisar mencionar nada, claro que vou ficar contente se pelo menos lembrar da ajuda e compartilhar com os amigos, rs. Caso sinta no coração, considere me pagar um cafezinho :heart: -> https://ko-fi.com/thiagobruno
+Vai utilizar esse código de forma comercial? Fique tranquilo pode usar de forma livre e sem precisar mencionar nada, claro que vou ficar contente se pelo menos lembrar da ajuda e compartilhar com os amigos, rs. Caso sinta no coração, considere me pagar um cafezinho :heart: -> https://ko-fi.com/thsbruno
 

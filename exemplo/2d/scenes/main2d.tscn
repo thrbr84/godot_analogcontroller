@@ -1,268 +1,304 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=3 uid="uid://c8ab3eyeh3f6v"]
 
-[ext_resource path="res://assets/font/PoetsenOne-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://scripts/main.gd" type="Script" id=2]
-[ext_resource path="res://addons/analog_controller/analog.gd" type="Script" id=3]
-[ext_resource path="res://assets/point_off.png" type="Texture" id=4]
-[ext_resource path="res://assets/point_on.png" type="Texture" id=5]
-[ext_resource path="res://assets/rect.png" type="Texture" id=6]
-[ext_resource path="res://assets/particles.png" type="Texture" id=7]
-[ext_resource path="res://assets/plane1.png" type="Texture" id=8]
-[ext_resource path="res://icon.png" type="Texture" id=9]
+[ext_resource type="FontFile" uid="uid://b8srntq6kg8pt" path="res://assets/font/PoetsenOne-Regular.ttf" id="1"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="2"]
+[ext_resource type="Script" path="res://addons/analog_controller/analog.gd" id="3"]
+[ext_resource type="Texture2D" uid="uid://cnm7utyfu7m5x" path="res://assets/point_off.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://bnchoup8xwnwc" path="res://assets/point_on.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://bxm88ahkm5au3" path="res://assets/rect.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://c5dhr2anywnuy" path="res://assets/particles.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://dpx0wkdw61151" path="res://assets/plane1.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://bbyd80fwsshk5" path="res://icon.png" id="9"]
 
-[sub_resource type="DynamicFont" id=1]
-size = 40
-font_data = ExtResource( 1 )
+[sub_resource type="FontFile" id="1"]
+fallbacks = Array[Font]([ExtResource("1")])
+face_index = null
+embolden = null
+transform = null
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/30/0 = Vector2(0, 0)
+cache/0/50/0/ascent = 0.0
+cache/0/50/0/descent = 0.0
+cache/0/50/0/underline_position = 0.0
+cache/0/50/0/underline_thickness = 0.0
+cache/0/50/0/scale = 1.0
+cache/0/50/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/50/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/50/0/kerning_overrides/30/0 = Vector2(0, 0)
+cache/0/30/0/ascent = 0.0
+cache/0/30/0/descent = 0.0
+cache/0/30/0/underline_position = 0.0
+cache/0/30/0/underline_thickness = 0.0
+cache/0/30/0/scale = 1.0
+cache/0/30/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/30/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/30/0/kerning_overrides/30/0 = Vector2(0, 0)
 
-[sub_resource type="DynamicFont" id=2]
-size = 30
-font_data = ExtResource( 1 )
+[sub_resource type="LabelSettings" id="LabelSettings_fxyp1"]
+font_size = 30
 
-[sub_resource type="Curve" id=3]
-_data = [ Vector2( 0, 1 ), 0.0, 0.0209908, 0, 0, Vector2( 1, 0 ), -2.96993, 0.0, 0, 0 ]
+[sub_resource type="LabelSettings" id="LabelSettings_u4fe4"]
+font_size = 30
 
-[sub_resource type="Gradient" id=4]
-offsets = PoolRealArray( 0.00398406, 1 )
-colors = PoolColorArray( 0.701961, 0.117647, 0.113725, 1, 0.996078, 0.996078, 0.00392157, 0 )
+[sub_resource type="FontFile" id="2"]
+fallbacks = Array[Font]([ExtResource("1")])
+face_index = null
+embolden = null
+transform = null
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/30/0 = Vector2(0, 0)
+cache/0/30/0/ascent = 0.0
+cache/0/30/0/descent = 0.0
+cache/0/30/0/underline_position = 0.0
+cache/0/30/0/underline_thickness = 0.0
+cache/0/30/0/scale = 1.0
+cache/0/30/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/30/0/kerning_overrides/30/0 = Vector2(0, 0)
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Curve" id="3"]
+_data = [Vector2(0, 1), 0.0, 0.0209908, 0, 0, Vector2(1, 0), -2.96993, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="4"]
+offsets = PackedFloat32Array(0.00398406, 1)
+colors = PackedColorArray(0.701961, 0.117647, 0.113725, 1, 0.996078, 0.996078, 0.00392157, 0)
+
+[sub_resource type="Animation" id="5"]
 length = 9.5
-loop = true
+loop_mode = 1
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5, 5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8, 5.9, 6, 6.1, 6.2, 6.3, 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 7, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7.8, 7.9, 8, 8.1, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7, 8.8, 8.9, 9, 9.1, 9.2, 9.3, 9.4, 9.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5, 5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8, 5.9, 6, 6.1, 6.2, 6.3, 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 7, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7.8, 7.9, 8, 8.1, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7, 8.8, 8.9, 9, 9.1, 9.2, 9.3, 9.4, 9.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96 ]
+"values": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath(".:vframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ 10 ]
+"values": [10]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id="6"]
 length = 3.7
-loop = true
+loop_mode = 1
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37 ]
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath(".:vframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ 4 ]
+"values": [4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3x350"]
+_data = {
+"idle": SubResource("5"),
+"walk": SubResource("6")
 }
 
 [node name="main" type="Node2D"]
-script = ExtResource( 2 )
+script = ExtResource("2")
 
 [node name="bkg" type="ColorRect" parent="."]
-margin_right = 720.0
-margin_bottom = 300.0
-color = Color( 0.905882, 0.654902, 0.0823529, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_right = 720.0
+offset_bottom = 300.0
+color = Color(0.905882, 0.654902, 0.0823529, 1)
 
-[node name="icon" type="Sprite" parent="bkg"]
-position = Vector2( 360, 150 )
-scale = Vector2( 0.548463, 0.548463 )
-texture = ExtResource( 9 )
+[node name="icon" type="Sprite2D" parent="bkg"]
+position = Vector2(360, 150)
+scale = Vector2(0.548463, 0.548463)
+texture = ExtResource("9")
 
 [node name="hbox" type="HBoxContainer" parent="bkg"]
-margin_top = 312.0
-margin_right = 720.0
-margin_bottom = 384.0
-custom_constants/separation = 20
+layout_mode = 0
+offset_top = 333.0
+offset_right = 720.0
+offset_bottom = 405.0
+theme_override_constants/separation = 20
 alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="plane" type="Control" parent="bkg/hbox" groups=["btn"]]
-margin_left = 103.0
-margin_right = 350.0
-margin_bottom = 72.0
-rect_min_size = Vector2( 247, 72 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_minimum_size = Vector2(247, 72)
+layout_mode = 2
 
 [node name="bkg" type="ColorRect" parent="bkg/hbox/plane"]
-margin_right = 247.0
-margin_bottom = 72.0
-color = Color( 0.17, 0.7, 0.02, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+layout_mode = 0
+offset_right = 247.0
+offset_bottom = 72.0
+color = Color(0.17, 0.7, 0.02, 1)
 
 [node name="label" type="Label" parent="bkg/hbox/plane"]
-margin_right = 249.0
-margin_bottom = 72.0
-custom_colors/font_color_shadow = Color( 0.289062, 0.147983, 0.0338745, 1 )
-custom_constants/shadow_offset_x = 2
-custom_constants/shadow_offset_y = 2
-custom_fonts/font = SubResource( 1 )
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0.289062, 0.147983, 0.0338745, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = SubResource("1")
 text = "Plane"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+label_settings = SubResource("LabelSettings_fxyp1")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="action" type="TouchScreenButton" parent="bkg/hbox/plane"]
-self_modulate = Color( 1, 1, 1, 0 )
-scale = Vector2( 7.66762, 2.20823 )
-normal = ExtResource( 6 )
+self_modulate = Color(1, 1, 1, 0)
+scale = Vector2(7.66762, 2.20823)
+texture_normal = ExtResource("6")
 
 [node name="spark" type="Control" parent="bkg/hbox" groups=["btn"]]
-margin_left = 370.0
-margin_right = 617.0
-margin_bottom = 72.0
-rect_min_size = Vector2( 247, 72 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_minimum_size = Vector2(247, 72)
+layout_mode = 2
 
 [node name="bkg" type="ColorRect" parent="bkg/hbox/spark"]
-margin_right = 247.0
-margin_bottom = 72.0
-color = Color( 0.546875, 0.277894, 0.0619507, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+layout_mode = 0
+offset_right = 247.0
+offset_bottom = 72.0
+color = Color(0.546875, 0.277894, 0.0619507, 1)
 
 [node name="label" type="Label" parent="bkg/hbox/spark"]
-margin_right = 249.0
-margin_bottom = 72.0
-custom_colors/font_color_shadow = Color( 0.289062, 0.147983, 0.0338745, 1 )
-custom_constants/shadow_offset_x = 2
-custom_constants/shadow_offset_y = 2
-custom_fonts/font = SubResource( 1 )
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0.289062, 0.147983, 0.0338745, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = SubResource("1")
 text = "Spark"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+label_settings = SubResource("LabelSettings_u4fe4")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="action" type="TouchScreenButton" parent="bkg/hbox/spark"]
-self_modulate = Color( 1, 1, 1, 0 )
-scale = Vector2( 7.66762, 2.20823 )
-normal = ExtResource( 6 )
+self_modulate = Color(1, 1, 1, 0)
+scale = Vector2(7.66762, 2.20823)
+texture_normal = ExtResource("6")
 
 [node name="dynamicController" type="CheckButton" parent="."]
-margin_left = 161.0
-margin_top = 428.0
-margin_right = 520.0
-margin_bottom = 486.0
+offset_left = 161.0
+offset_top = 428.0
+offset_right = 520.0
+offset_bottom = 486.0
 focus_mode = 0
-custom_fonts/font = SubResource( 2 )
-custom_icons/off = ExtResource( 4 )
-custom_icons/on = ExtResource( 5 )
+theme_override_fonts/font = SubResource("2")
+theme_override_font_sizes/font_size = 30
+theme_override_icons/checked = ExtResource("5")
+theme_override_icons/unchecked = ExtResource("4")
 shortcut_in_tooltip = false
-enabled_focus_mode = 0
 text = "Dynamic"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="CanvasLayerUI" type="CanvasLayer" parent="."]
 
 [node name="AnalogController" type="Node2D" parent="CanvasLayerUI"]
-position = Vector2( 360, 1100 )
-script = ExtResource( 3 )
+position = Vector2(360, 1148)
+script = ExtResource("3")
 
 [node name="players" type="Node2D" parent="."]
-position = Vector2( 0, 744 )
 z_index = 2
+position = Vector2(0, 744)
 
-[node name="plane" type="Sprite" parent="players" groups=["plane", "player"]]
-position = Vector2( 360, 0 )
-scale = Vector2( 0.713328, 0.713328 )
-texture = ExtResource( 8 )
+[node name="plane" type="Sprite2D" parent="players" groups=["plane", "player"]]
+position = Vector2(360, 0)
+scale = Vector2(0.713328, 0.713328)
+texture = ExtResource("8")
 
 [node name="particles_l" type="CPUParticles2D" parent="players/plane"]
-position = Vector2( -17.6973, 109.717 )
 z_index = -1
+position = Vector2(-17.6973, 109.717)
 lifetime = 0.5
 speed_scale = 3.0
-local_coords = false
-texture = ExtResource( 7 )
+texture = ExtResource("7")
 emission_shape = 1
 emission_sphere_radius = 1.0
-scale_amount_curve = SubResource( 3 )
-color_ramp = SubResource( 4 )
+scale_amount_curve = SubResource("3")
+color_ramp = SubResource("4")
 
 [node name="particles_r" type="CPUParticles2D" parent="players/plane"]
-position = Vector2( 22.9572, 109.717 )
 z_index = -1
+position = Vector2(22.9572, 109.717)
 lifetime = 0.5
 speed_scale = 3.0
-local_coords = false
-texture = ExtResource( 7 )
+texture = ExtResource("7")
 emission_shape = 1
 emission_sphere_radius = 1.0
-scale_amount_curve = SubResource( 3 )
-color_ramp = SubResource( 4 )
+scale_amount_curve = SubResource("3")
+color_ramp = SubResource("4")
 
-[node name="shadow" type="Sprite" parent="players/plane"]
-modulate = Color( 0, 0, 0, 0.0941176 )
-position = Vector2( -9.81757, 232.742 )
-scale = Vector2( 0.508198, 0.508198 )
+[node name="shadow" type="Sprite2D" parent="players/plane"]
+modulate = Color(0, 0, 0, 0.0941176)
 z_index = -1
-texture = ExtResource( 8 )
+position = Vector2(-9.81757, 232.742)
+scale = Vector2(0.508198, 0.508198)
+texture = ExtResource("8")
 
-[node name="shoot" type="Position2D" parent="players/plane"]
-position = Vector2( 3.27017, -130.807 )
+[node name="shoot" type="Marker2D" parent="players/plane"]
+position = Vector2(3.27017, -130.807)
 
-[node name="spark" type="Sprite" parent="players" groups=["human", "player"]]
-position = Vector2( 359.68, 0 )
-scale = Vector2( 1.5, 1.5 )
-offset = Vector2( 0, -35 )
+[node name="spark" type="Sprite2D" parent="players" groups=["human", "player"]]
+position = Vector2(359.68, 0)
+scale = Vector2(1.5, 1.5)
+offset = Vector2(0, -35)
 hframes = 10
-vframes = 4
+vframes = 10
+frame = 1
 
 [node name="anim" type="AnimationPlayer" parent="players/spark"]
 autoplay = "idle"
-playback_speed = 5.0
-anims/idle = SubResource( 5 )
-anims/walk = SubResource( 6 )
+libraries = {
+"": SubResource("AnimationLibrary_3x350")
+}
 
-[node name="shadow" type="Sprite" parent="players/spark"]
-modulate = Color( 0, 0, 0, 0.12549 )
-position = Vector2( 0, -3.30916 )
-scale = Vector2( 2.68994, 1.84609 )
+[node name="shadow" type="Sprite2D" parent="players/spark"]
+modulate = Color(0, 0, 0, 0.12549)
 z_index = -1
-texture = ExtResource( 7 )
+position = Vector2(0, -3.30916)
+scale = Vector2(2.68994, 1.84609)
+texture = ExtResource("7")
 
 [connection signal="toggled" from="dynamicController" to="." method="_on_dynamicController_toggled"]
 [connection signal="analogChange" from="CanvasLayerUI/AnalogController" to="." method="_on_AnalogController_analogChange"]

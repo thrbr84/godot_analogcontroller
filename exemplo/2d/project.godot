@@ -6,31 +6,28 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
-
-_global_script_classes=[  ]
-_global_script_class_icons={
-}
+config_version=5
 
 [application]
 
-config/name="Godot Analogic 2D"
+config/name="Godot4 - Analogic 2D"
 run/main_scene="res://scenes/main2d.tscn"
+config/features=PackedStringArray("4.0")
 config/icon="res://icon.png"
 
 [display]
 
-window/size/width=720
-window/size/height=1280
-window/size/test_width=360
-window/size/test_height=640
-window/handheld/orientation="portrait"
-window/stretch/mode="2d"
-window/stretch/aspect="keep"
+window/size/viewport_width=720
+window/size/viewport_height=1280
+window/size/window_width_override=360
+window/size/window_height_override=640
+window/handheld/orientation=1
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "analog_controller" )
+enabled=PackedStringArray("res://addons/analog_controller/plugin.cfg")
 
 [input_devices]
 
@@ -38,7 +35,7 @@ pointing/emulate_touch_from_mouse=true
 
 [rendering]
 
+textures/vram_compression/import_etc2_astc=true
+environment/defaults/default_environment="res://default_env.tres"
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
-vram_compression/import_etc2=false
-environment/default_environment="res://default_env.tres"

@@ -2,10 +2,10 @@ extends Node2D
 
 enum typesAnalog { DIRECTION_2_H, DIRECTION_2_V, DIRECTION_4, DIRECTION_8, DIRECTION_360 }
 
-onready var ball = Sprite.new()
-onready var ballAnalogicoBall = Sprite.new()
-onready var bg = Sprite.new()
-onready var bgAnalogicoBase = Sprite.new()
+@onready var ball = Sprite2D.new()
+@onready var ballAnalogicoBall = Sprite2D.new()
+@onready var bg = Sprite2D.new()
+@onready var bgAnalogicoBase = Sprite2D.new()
 
 const INACTIVE = -1
 
@@ -25,14 +25,14 @@ var ballPos = Vector2()
 var squaredHalfSizeLenght = 0
 var currentPointerIDX = INACTIVE
 
-export(bool) var isDynamicallyShowing = false
-export(typesAnalog) var typeAnalogic = typesAnalog.DIRECTION_8
-export(float,0.00,1.0) var smoothClick = 0.02
-export(float,0.00,1.0) var smoothRelease = 0.02
-export(Vector2) var scaleBall = Vector2(1,1)
-export(Texture) var bigBallTexture = ResourceLoader.load("res://addons/analog_controller/big_circle_DIRECTION_8.png")
-export(Texture) var smallBallTexture = ResourceLoader.load("res://addons/analog_controller/small_circle_DIRECTION_8.png")
-export(Dictionary) var directionsResult = {
+@export var isDynamicallyShowing:bool = false
+@export var typeAnalogic: typesAnalog = typesAnalog.DIRECTION_8
+@export_range(0.00,1.00) var smoothClick = 0.02
+@export_range(0.00,1.00) var smoothRelease = 0.02
+@export var scaleBall: Vector2 = Vector2(1,1)
+@export var bigBallTexture: Texture2D = preload("big_circle_DIRECTION_8.png")
+@export var smallBallTexture: Texture2D = preload("small_circle_DIRECTION_8.png")
+@export var directionsResult: Dictionary = {
 	"right":"right",
 	"down_right":"down_right",
 	"down":"down",
@@ -75,7 +75,7 @@ func _configAnalog():
 	if isDynamicallyShowing:
 		modulate.a = 0
 	else:
-		yield(get_tree().create_timer(.2), "timeout")
+		await get_tree().create_timer(.2).timeout
 		position = initial_position
 		modulate.a = 1
 		show()
@@ -126,12 +126,12 @@ func need2ChangeActivePointer(event):
 				var lenght = (get_global_position() - Vector2(mouse_event_pos.x, mouse_event_pos.y)).length_squared();
 				return lenght < squaredHalfSizeLenght
 		else:
-		 return false
+			return false
 	else:
 		return false
 
-func isActive():
-	if local_paused:return
+func isActive() -> bool:
+	if local_paused:return false
 	return currentPointerIDX != INACTIVE
 
 func extractPointerIdx(event):
@@ -162,6 +162,7 @@ func process_input(event):
 		reset()
 	else:
 		emit_signal("analogPressed")
+		show()
 		
 		var _force = 0
 		var _pos = Vector2.ZERO
@@ -252,10 +253,11 @@ func reset() -> void:
 	currentPointerIDX = INACTIVE
 	calculateForce(0, 0)
 
+	updateBallPos()
 	if isDynamicallyShowing:
 		hide()
-	else:
-		updateBallPos()
+	#else:
+	
 
 func showAtPos(pos) -> void:
 	if local_paused: return
@@ -263,22 +265,23 @@ func showAtPos(pos) -> void:
 
 	self.set_global_position(pos)
 	while self.modulate.a < 1.0 and isActive():
-		yield(get_tree().create_timer(smoothClick), "timeout")
+		await get_tree().create_timer(smoothClick).timeout
 		self.modulate.a += .1
 	
 	if !isActive():
 		self.modulate.a = 0
 			
 func hide() -> void:
+	if isDynamicallyShowing: return
 	while self.modulate.a > 0.0 and !isActive():
-		yield(get_tree().create_timer(smoothRelease), "timeout")
+		await get_tree().create_timer(smoothRelease).timeout
 		self.modulate.a -= .1
 	
 	emit_signal("analogRelease")
-
+	
 func show() -> void:
 	while self.modulate.a < 1.0 and !isActive():
-		yield(get_tree().create_timer(smoothRelease), "timeout")
+		await get_tree().create_timer(smoothRelease).timeout
 		self.modulate.a += .1
 
 	emit_signal("analogRelease")
@@ -293,15 +296,15 @@ func updateBallPos() -> void:
 		ballPos.y = halfSize.y * -currentForce.y
 		
 	ballPos *= scaleBall 
-	ball.set_position(ballPos)
+	ball.position = ballPos
 	
 	var bigBallSize = (bg.texture.get_size().x / 2) * scaleBall.x
 	currentForce2 = (centerPoint.distance_to(ballPos) * 100.0 / bigBallSize) / 100.0
-	currentForce2 = stepify(currentForce2, .001)
+	currentForce2 = snappedf(currentForce2, .001)
 	currentForce2 = clamp(currentForce2, -1.0, 1.0)
 
 
-func calculateForce(var x, var y) -> void:
+func calculateForce(x, y) -> void:
 	if local_paused:return
 	if typeAnalogic != typesAnalog.DIRECTION_2_V:
 		currentForce.x = (x - centerPoint.x)/halfSize.x
@@ -332,3 +335,6 @@ func pause() -> void:
 	
 func unpause() -> void:
 	local_paused = false
+	if isDynamicallyShowing: return
+	reset()
+	show()

@@ -1,6 +1,9 @@
 extends Node2D
 
-onready var AnalogController = $CanvasLayerUI/AnalogController
+@onready var AnalogController = $CanvasLayerUI/AnalogController
+@onready var players = $players
+@onready var plane_shoot = $players/plane/shoot
+@onready var spark_anim = $players/spark/anim
 
 var bullet = preload("res://scenes/bullet.tscn")
 var speed = 10
@@ -34,12 +37,15 @@ func _ready():
 	_pre_cache()
 	var idx = 0
 	for options in get_tree().get_nodes_in_group("btn"):
-		options.get_node("action").connect("pressed", self, "_on_player_select", [options.name])
-		
+		var tsb: TouchScreenButton = options.get_node("action")
+		tsb.pressed.connect(_on_player_select.bind(options.name))
+	
 		if idx == 0:
 			_on_player_select(options.name)
-		
+			pass
 		idx += 1
+	
+	
 	
 func _physics_process(_delta):
 	if weakref(player).get_ref():
@@ -48,8 +54,8 @@ func _physics_process(_delta):
 func _shoot():
 	if weakref(player).get_ref():
 		if player.is_in_group("plane"):
-			var b = bullet.instance()
-			b.global_position = $players/plane/shoot.global_position
+			var b = bullet.instantiate()
+			b.global_position = plane_shoot.global_position
 			get_tree().get_root().call_deferred("add_child", b)
 
 func _input(event):
@@ -65,14 +71,14 @@ func _on_player_select(player_option):
 	
 	for options in get_tree().get_nodes_in_group("btn"):
 		options.get_node("bkg").color = colorOff
-		if options.name == player_option:
+		if options.name == str(player_option):
 			options.get_node("bkg").color = colorOn
 	
 	for players in get_tree().get_nodes_in_group("player"):
 		players.hide()
 	
-	if $players.has_node(player_option):
-		player = $players.get_node(player_option)
+	if players.has_node(str(player_option)):
+		player = players.get_node(str(player_option))
 		player.show()
 		
 		if player.is_in_group("human"):
@@ -110,7 +116,7 @@ func _movement_human(force, pos):
 	
 	if player.is_in_group("human"):
 		var speedWalk = 5.0 * force.length()
-		$players/spark/anim.playback_speed = speedWalk 
+		spark_anim.speed_scale = speedWalk 
 
 func _on_dynamicController_toggled(button_pressed):
 	AnalogController.isDynamicallyShowing = button_pressed
